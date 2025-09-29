@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project 2 | RebornSama Resume</title>
+    <title>Project 2 | Mattias Ruiz Resume</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -16,24 +16,57 @@
     </header>
     <main>
         <section aria-labelledby="project-title">
-            <h1 id="project-title">Project 2 Title</h1>
-            <img src="images/project2-placeholder.png" alt="Screenshot of Project 2" class="project-image">
+            <h1 id="project-title">Gasoline Calculator</h1>
             <article aria-labelledby="description-heading">
                 <h2 id="description-heading">Description</h2>
-                <p>A brief summary of what Project 2 is, its goals, and main features.</p>
+                <p>
+                    The Gasoline Calculator is a simple tool designed to help users estimate the cost of fuel needed for a trip. By entering the distance to travel, average miles per gallon, and current price per gallon, users can quickly determine their total gasoline expense.
+                </p>
             </article>
             <aside aria-labelledby="skills-learned-heading">
                 <h2 id="skills-learned-heading">Skills Learned</h2>
                 <ul>
-                    <li>Skill A</li>
-                    <li>Skill B</li>
-                    <li>Skill C</li>
+                    <li>Basic UI design and usability</li>
+                    <li>Mathematical calculations in programming</li>
+                    <li>User input validation</li>
                 </ul>
             </aside>
+            <section aria-labelledby="demo-heading">
+                <h2 id="demo-heading">Demo</h2>
+                <form id="gasCalc" style="max-width: 400px;">
+                    <label for="distance">Distance (miles):</label>
+                    <input type="number" id="distance" name="distance" required min="1" step="any"><br><br>
+                    
+                    <label for="mpg">Miles per Gallon (MPG):</label>
+                    <input type="number" id="mpg" name="mpg" required min="1" step="any"><br><br>
+                    
+                    <label for="price">Price per Gallon ($):</label>
+                    <input type="number" id="price" name="price" required min="0.01" step="any"><br><br>
+                    
+                    <button type="button" onclick="calculateGasoline()">Calculate</button>
+                </form>
+                <p id="result" style="font-weight: bold; margin-top: 1em;"></p>
+                <script>
+                    function calculateGasoline() {
+                        const distance = parseFloat(document.getElementById('distance').value);
+                        const mpg = parseFloat(document.getElementById('mpg').value);
+                        const price = parseFloat(document.getElementById('price').value);
+                        if (distance > 0 && mpg > 0 && price > 0) {
+                            const gallons = distance / mpg;
+                            const total = gallons * price;
+                            document.getElementById('result').textContent = 
+                                `Estimated Gasoline Cost: $${total.toFixed(2)}`;
+                        } else {
+                            document.getElementById('result').textContent = 
+                                "Please enter valid numbers for all fields.";
+                        }
+                    }
+                </script>
+            </section>
         </section>
     </main>
     <footer>
-        <p>&copy; 2025 RebornSama. All rights reserved.</p>
+        <p>&copy; 2025 Mattias Ruiz. All rights reserved.</p>
     </footer>
 </body>
 </html>
